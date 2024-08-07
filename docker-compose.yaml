@@ -1,0 +1,84 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+        context: frontend
+        dockerfile: dev.Dockerfile
+
+  auth:
+    build: ./auth
+    environment:
+      DATABASE_URL: postgres://postgres:password@postgres:5432/georecord
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/auth/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 0s
+
+  api:
+    build: ./api
+    environment:
+      DATABASE_URL: postgres://postgres:password@postgres:5432/georecord
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 0s
+
+  user:
+    build: ./user
+    environment:
+      DATABASE_URL: postgres://postgres:password@postgres:5432/georecord
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/user/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 0s
+
+  proxy:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./local/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./local/nginx/conf.d/:/etc/nginx/conf.d/:ro
+    depends_on:
+      frontend:
+        condition: service_started
+      auth:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+
+  postgres:
+    image: postgis/postgis:15-3.4
+    environment:
+      POSTGRES_DB: georecord
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./postgres/schema.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432" # Leave the port open to make debugging easier
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "georecord"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+      start_period: 10s

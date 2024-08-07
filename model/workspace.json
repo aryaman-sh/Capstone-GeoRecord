@@ -1,0 +1,702 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedAgent" : "structurizr-javascript",
+  "lastModifiedDate" : "2024-05-31T06:54:18Z",
+  "model" : {
+    "deploymentNodes" : [ {
+      "children" : [ {
+        "containerInstances" : [ {
+          "containerId" : "3",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "24",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "production_frontend"
+          },
+          "relationships" : [ {
+            "description" : "Retreives frontend code",
+            "destinationId" : "30",
+            "id" : "31",
+            "linkedRelationshipId" : "18",
+            "sourceId" : "24",
+            "technology" : "HTTPS"
+          }, {
+            "description" : "Authenticates with",
+            "destinationId" : "32",
+            "id" : "33",
+            "linkedRelationshipId" : "15",
+            "sourceId" : "24",
+            "technology" : "JSON/HTTPS"
+          }, {
+            "description" : "Gets/Sets location data",
+            "destinationId" : "34",
+            "id" : "35",
+            "linkedRelationshipId" : "16",
+            "sourceId" : "24",
+            "technology" : "JSON/HTTPS"
+          }, {
+            "description" : "Sets/Gets user data",
+            "destinationId" : "36",
+            "id" : "37",
+            "linkedRelationshipId" : "17",
+            "sourceId" : "24",
+            "technology" : "JSON/HTTPS"
+          }, {
+            "description" : "Web Traffix",
+            "destinationId" : "26",
+            "id" : "43",
+            "properties" : {
+              "structurizr.dsl.identifier" : "77a5052b-b820-4974-9b45-59a226b9fbb3"
+            },
+            "sourceId" : "24",
+            "tags" : "Relationship",
+            "technology" : "HTTPS"
+          } ],
+          "tags" : "Container Instance"
+        } ],
+        "environment" : "Production",
+        "id" : "23",
+        "instances" : "1",
+        "name" : "Web Browser",
+        "properties" : {
+          "structurizr.dsl.identifier" : "production_web_browser"
+        },
+        "tags" : "Element,Deployment Node",
+        "technology" : "Chrome, Firefox, Safari, or Edge"
+      } ],
+      "environment" : "Production",
+      "id" : "22",
+      "instances" : "1",
+      "name" : "Customer's computer",
+      "properties" : {
+        "structurizr.dsl.identifier" : "40ccc94c-fd5a-48f3-90a2-a70eb6c27d81"
+      },
+      "tags" : "Element,Deployment Node"
+    }, {
+      "environment" : "Production",
+      "id" : "25",
+      "infrastructureNodes" : [ {
+        "description" : "Effeciently routes and caches traffic",
+        "environment" : "Production",
+        "id" : "26",
+        "name" : "CDN",
+        "properties" : {
+          "structurizr.dsl.identifier" : "production_cdn"
+        },
+        "relationships" : [ {
+          "description" : "Web Traffic",
+          "destinationId" : "28",
+          "id" : "44",
+          "properties" : {
+            "structurizr.dsl.identifier" : "3ce71412-6d39-41aa-96f0-ae3bc7e5c76a"
+          },
+          "sourceId" : "26",
+          "tags" : "Relationship",
+          "technology" : "HTTP"
+        } ],
+        "tags" : "Element,Infrastructure Node,{}",
+        "technology" : "AWS Cloudfront"
+      } ],
+      "instances" : "1",
+      "name" : "AWS Global",
+      "properties" : {
+        "structurizr.dsl.identifier" : "production_aws_global"
+      },
+      "tags" : "Element,Deployment Node"
+    }, {
+      "children" : [ {
+        "containerInstances" : [ {
+          "containerId" : "10",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "30",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "production_frontend_microservice"
+          },
+          "tags" : "Container Instance"
+        }, {
+          "containerId" : "7",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "32",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "production_auth_microservice"
+          },
+          "relationships" : [ {
+            "description" : "Queries",
+            "destinationId" : "39",
+            "id" : "40",
+            "linkedRelationshipId" : "19",
+            "sourceId" : "32",
+            "technology" : "TCP/IP"
+          } ],
+          "tags" : "Container Instance"
+        }, {
+          "containerId" : "8",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "34",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "production_api_microservice"
+          },
+          "relationships" : [ {
+            "description" : "Queries",
+            "destinationId" : "39",
+            "id" : "41",
+            "linkedRelationshipId" : "20",
+            "sourceId" : "34",
+            "technology" : "TCP/IP"
+          } ],
+          "tags" : "Container Instance"
+        }, {
+          "containerId" : "9",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "36",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "production_user_microservice"
+          },
+          "relationships" : [ {
+            "description" : "Queries",
+            "destinationId" : "39",
+            "id" : "42",
+            "linkedRelationshipId" : "21",
+            "sourceId" : "36",
+            "technology" : "TCP/IP"
+          } ],
+          "tags" : "Container Instance"
+        } ],
+        "description" : "AWS serverless scaleable container hosting",
+        "environment" : "Production",
+        "id" : "29",
+        "instances" : "1",
+        "name" : "ECS Services",
+        "properties" : {
+          "structurizr.dsl.identifier" : "production_frontend_microservice_ecs"
+        },
+        "tags" : "Element,Deployment Node",
+        "technology" : "AWS Elastic Container Service"
+      }, {
+        "containerInstances" : [ {
+          "containerId" : "11",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "39",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "production_db"
+          },
+          "tags" : "Container Instance"
+        } ],
+        "description" : "AWS managed database hosting",
+        "environment" : "Production",
+        "id" : "38",
+        "instances" : "1",
+        "name" : "RDS",
+        "properties" : {
+          "structurizr.dsl.identifier" : "production_database"
+        },
+        "tags" : "Element,Deployment Node",
+        "technology" : "AWS Relational Database Service"
+      } ],
+      "environment" : "Production",
+      "id" : "27",
+      "infrastructureNodes" : [ {
+        "description" : "Routes requests to the microservices",
+        "environment" : "Production",
+        "id" : "28",
+        "name" : "Application Load Balancer",
+        "properties" : {
+          "structurizr.dsl.identifier" : "production_lb"
+        },
+        "relationships" : [ {
+          "description" : "Forwards web page requests",
+          "destinationId" : "30",
+          "id" : "45",
+          "properties" : {
+            "structurizr.dsl.identifier" : "f2c12b9d-1f5a-43b7-9f5a-bc651a93527f"
+          },
+          "sourceId" : "28",
+          "tags" : "Relationship",
+          "technology" : "HTTP"
+        }, {
+          "description" : "Forwards authentication requests",
+          "destinationId" : "32",
+          "id" : "46",
+          "properties" : {
+            "structurizr.dsl.identifier" : "fd1a96ad-92bb-4c0b-89bc-102135e9fecc"
+          },
+          "sourceId" : "28",
+          "tags" : "Relationship",
+          "technology" : "HTTP/JSON"
+        }, {
+          "description" : "Forwards location requests",
+          "destinationId" : "34",
+          "id" : "47",
+          "properties" : {
+            "structurizr.dsl.identifier" : "08d220bd-d41d-4694-9c09-2b05110cf97c"
+          },
+          "sourceId" : "28",
+          "tags" : "Relationship",
+          "technology" : "HTTP/JSON"
+        }, {
+          "description" : "Forwards user data requests",
+          "destinationId" : "36",
+          "id" : "48",
+          "properties" : {
+            "structurizr.dsl.identifier" : "1c1aec40-83cd-45cd-a4fb-dd4a6f2a90fe"
+          },
+          "sourceId" : "28",
+          "tags" : "Relationship",
+          "technology" : "HTTP/JSON"
+        } ],
+        "tags" : "Element,Infrastructure Node,{}",
+        "technology" : "AWS Elastic Load Balancer"
+      } ],
+      "instances" : "1",
+      "name" : "AWS US-EAST-1",
+      "properties" : {
+        "structurizr.dsl.identifier" : "ca0dfa8c-9e2a-43ec-ae05-0656704e0778"
+      },
+      "tags" : "Element,Deployment Node"
+    } ],
+    "people" : [ {
+      "description" : "Interacts with the system.",
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "User",
+      "properties" : {
+        "structurizr.dsl.identifier" : "user"
+      },
+      "relationships" : [ {
+        "description" : "uses",
+        "destinationId" : "2",
+        "id" : "12",
+        "properties" : {
+          "structurizr.dsl.identifier" : "c01bd229-5025-40bb-b2da-259b6a5cd3b6"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Interacts with",
+        "destinationId" : "3",
+        "id" : "13",
+        "properties" : {
+          "structurizr.dsl.identifier" : "a7b37672-e336-405f-b8b3-2c2c1b4c1176"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "components" : [ {
+          "description" : "A React hook that manages authentication state and communication",
+          "documentation" : { },
+          "id" : "4",
+          "name" : "Auth Hook",
+          "properties" : {
+            "structurizr.dsl.identifier" : "auth_hook"
+          },
+          "relationships" : [ {
+            "description" : "Authenticates with",
+            "destinationId" : "7",
+            "id" : "14",
+            "properties" : {
+              "structurizr.dsl.identifier" : "frontend_auth_rel"
+            },
+            "sourceId" : "4",
+            "tags" : "Relationship",
+            "technology" : "JSON/HTTPS"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "A React hook that manages location state and communication",
+          "documentation" : { },
+          "id" : "5",
+          "name" : "Location Hook",
+          "properties" : {
+            "structurizr.dsl.identifier" : "location_hook"
+          },
+          "tags" : "Element,Component"
+        }, {
+          "description" : "A React hook that manages user data communication",
+          "documentation" : { },
+          "id" : "6",
+          "name" : "User Hook",
+          "properties" : {
+            "structurizr.dsl.identifier" : "user_hook"
+          },
+          "tags" : "Element,Component"
+        } ],
+        "description" : "A web interface to interact with the service",
+        "documentation" : { },
+        "id" : "3",
+        "name" : "Frontend",
+        "properties" : {
+          "structurizr.dsl.identifier" : "frontend"
+        },
+        "relationships" : [ {
+          "description" : "Authenticates with",
+          "destinationId" : "7",
+          "id" : "15",
+          "linkedRelationshipId" : "14",
+          "sourceId" : "3",
+          "technology" : "JSON/HTTPS"
+        }, {
+          "description" : "Gets/Sets location data",
+          "destinationId" : "8",
+          "id" : "16",
+          "properties" : {
+            "structurizr.dsl.identifier" : "frontend_api_rel"
+          },
+          "sourceId" : "3",
+          "tags" : "Relationship",
+          "technology" : "JSON/HTTPS"
+        }, {
+          "description" : "Sets/Gets user data",
+          "destinationId" : "9",
+          "id" : "17",
+          "properties" : {
+            "structurizr.dsl.identifier" : "frontend_user_rel"
+          },
+          "sourceId" : "3",
+          "tags" : "Relationship",
+          "technology" : "JSON/HTTPS"
+        }, {
+          "description" : "Retreives frontend code",
+          "destinationId" : "10",
+          "id" : "18",
+          "properties" : {
+            "structurizr.dsl.identifier" : "frontend_frontend_rel"
+          },
+          "sourceId" : "3",
+          "tags" : "Relationship",
+          "technology" : "HTTPS"
+        } ],
+        "tags" : "Element,Container,Web Browser",
+        "technology" : "React"
+      }, {
+        "description" : "A microservice responsible for managing user authentication",
+        "documentation" : { },
+        "id" : "7",
+        "name" : "Auth Microservice",
+        "properties" : {
+          "structurizr.dsl.identifier" : "auth_microservice"
+        },
+        "relationships" : [ {
+          "description" : "Queries",
+          "destinationId" : "11",
+          "id" : "19",
+          "properties" : {
+            "structurizr.dsl.identifier" : "4118fb1d-d278-4190-bda6-23dcddac68a8"
+          },
+          "sourceId" : "7",
+          "tags" : "Relationship",
+          "technology" : "TCP/IP"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "description" : "A microservice responsible for managing location data",
+        "documentation" : { },
+        "id" : "8",
+        "name" : "API Microservice",
+        "properties" : {
+          "structurizr.dsl.identifier" : "api_microservice"
+        },
+        "relationships" : [ {
+          "description" : "Queries",
+          "destinationId" : "11",
+          "id" : "20",
+          "properties" : {
+            "structurizr.dsl.identifier" : "e5eeb16d-c4d6-4f9c-a518-fd42b7fb5869"
+          },
+          "sourceId" : "8",
+          "tags" : "Relationship",
+          "technology" : "TCP/IP"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "description" : "A microservice responsible for managing user data",
+        "documentation" : { },
+        "id" : "9",
+        "name" : "User Microservice",
+        "properties" : {
+          "structurizr.dsl.identifier" : "user_microservice"
+        },
+        "relationships" : [ {
+          "description" : "Queries",
+          "destinationId" : "11",
+          "id" : "21",
+          "properties" : {
+            "structurizr.dsl.identifier" : "858cec3c-bdb0-41cd-9cce-8713e34dbf16"
+          },
+          "sourceId" : "9",
+          "tags" : "Relationship",
+          "technology" : "TCP/IP"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "description" : "A microservice responsible for serving the web frontend",
+        "documentation" : { },
+        "id" : "10",
+        "name" : "Frontend Microservice",
+        "properties" : {
+          "structurizr.dsl.identifier" : "frontend_microservice"
+        },
+        "tags" : "Element,Container"
+      }, {
+        "description" : "A geospatial database based on Postgres",
+        "documentation" : { },
+        "id" : "11",
+        "name" : "PostGIS",
+        "properties" : {
+          "structurizr.dsl.identifier" : "db"
+        },
+        "tags" : "Element,Container,Database",
+        "technology" : "PostGIS"
+      } ],
+      "description" : "The GeoRecord Web Application",
+      "documentation" : { },
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "GeoRecord",
+      "properties" : {
+        "structurizr.dsl.identifier" : "georecord"
+      },
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Name",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKCiAgICBtb2RlbCB7CiAgICAgICAgdXNlciA9IHBlcnNvbiAiVXNlciIgIkludGVyYWN0cyB3aXRoIHRoZSBzeXN0ZW0uIgoKICAgICAgICBnZW9yZWNvcmQgPSBzb2Z0d2FyZVN5c3RlbSAiR2VvUmVjb3JkIiAiVGhlIEdlb1JlY29yZCBXZWIgQXBwbGljYXRpb24iIHsKCgogICAgICAgICAgICBmcm9udGVuZCA9IGNvbnRhaW5lciAiRnJvbnRlbmQiICJBIHdlYiBpbnRlcmZhY2UgdG8gaW50ZXJhY3Qgd2l0aCB0aGUgc2VydmljZSIgIlJlYWN0IiAiV2ViIEJyb3dzZXIiIHsKICAgICAgICAgICAgICAgIGF1dGhfaG9vayA9IGNvbXBvbmVudCAiQXV0aCBIb29rIiAiQSBSZWFjdCBob29rIHRoYXQgbWFuYWdlcyBhdXRoZW50aWNhdGlvbiBzdGF0ZSBhbmQgY29tbXVuaWNhdGlvbiIKICAgICAgICAgICAgICAgIGxvY2F0aW9uX2hvb2sgPSBjb21wb25lbnQgIkxvY2F0aW9uIEhvb2siICJBIFJlYWN0IGhvb2sgdGhhdCBtYW5hZ2VzIGxvY2F0aW9uIHN0YXRlIGFuZCBjb21tdW5pY2F0aW9uIgogICAgICAgICAgICAgICAgdXNlcl9ob29rID0gY29tcG9uZW50ICJVc2VyIEhvb2siICJBIFJlYWN0IGhvb2sgdGhhdCBtYW5hZ2VzIHVzZXIgZGF0YSBjb21tdW5pY2F0aW9uIgogICAgICAgICAgICB9CgogICAgICAgICAgICBhdXRoX21pY3Jvc2VydmljZSA9IGNvbnRhaW5lciAiQXV0aCBNaWNyb3NlcnZpY2UiICJBIG1pY3Jvc2VydmljZSByZXNwb25zaWJsZSBmb3IgbWFuYWdpbmcgdXNlciBhdXRoZW50aWNhdGlvbiIKICAgICAgICAgICAgYXBpX21pY3Jvc2VydmljZSA9IGNvbnRhaW5lciAiQVBJIE1pY3Jvc2VydmljZSIgIkEgbWljcm9zZXJ2aWNlIHJlc3BvbnNpYmxlIGZvciBtYW5hZ2luZyBsb2NhdGlvbiBkYXRhIgogICAgICAgICAgICB1c2VyX21pY3Jvc2VydmljZSA9IGNvbnRhaW5lciAiVXNlciBNaWNyb3NlcnZpY2UiICJBIG1pY3Jvc2VydmljZSByZXNwb25zaWJsZSBmb3IgbWFuYWdpbmcgdXNlciBkYXRhIgogICAgICAgICAgICBmcm9udGVuZF9taWNyb3NlcnZpY2UgPSBjb250YWluZXIgIkZyb250ZW5kIE1pY3Jvc2VydmljZSIgIkEgbWljcm9zZXJ2aWNlIHJlc3BvbnNpYmxlIGZvciBzZXJ2aW5nIHRoZSB3ZWIgZnJvbnRlbmQiCgoKCiAgICAgICAgICAgIGRiID0gY29udGFpbmVyICJQb3N0R0lTIiAiQSBnZW9zcGF0aWFsIGRhdGFiYXNlIGJhc2VkIG9uIFBvc3RncmVzIiAiUG9zdEdJUyIgIkRhdGFiYXNlIgoKICAgICAgICAgICAgdXNlciAtPiB0aGlzICJ1c2VzIgogICAgICAgICAgICB1c2VyIC0+IGZyb250ZW5kICJJbnRlcmFjdHMgd2l0aCIKCiAgICAgICAgICAgIGZyb250ZW5kX2F1dGhfcmVsID0gYXV0aF9ob29rIC0+IGF1dGhfbWljcm9zZXJ2aWNlICJBdXRoZW50aWNhdGVzIHdpdGgiICJKU09OL0hUVFBTIgogICAgICAgICAgICBmcm9udGVuZF9hcGlfcmVsID0gZnJvbnRlbmQgLT4gYXBpX21pY3Jvc2VydmljZSAiR2V0cy9TZXRzIGxvY2F0aW9uIGRhdGEiICJKU09OL0hUVFBTIgogICAgICAgICAgICBmcm9udGVuZF91c2VyX3JlbCA9IGZyb250ZW5kIC0+IHVzZXJfbWljcm9zZXJ2aWNlICJTZXRzL0dldHMgdXNlciBkYXRhIiAiSlNPTi9IVFRQUyIKICAgICAgICAgICAgZnJvbnRlbmRfZnJvbnRlbmRfcmVsID0gZnJvbnRlbmQgLT4gZnJvbnRlbmRfbWljcm9zZXJ2aWNlICJSZXRyZWl2ZXMgZnJvbnRlbmQgY29kZSIgIkhUVFBTIgoKCiAgICAgICAgICAgIGF1dGhfbWljcm9zZXJ2aWNlIC0+IGRiICJRdWVyaWVzIiAiVENQL0lQIgogICAgICAgICAgICBhcGlfbWljcm9zZXJ2aWNlIC0+IGRiICJRdWVyaWVzIiAiVENQL0lQIgogICAgICAgICAgICB1c2VyX21pY3Jvc2VydmljZSAtPiBkYiAiUXVlcmllcyIgIlRDUC9JUCIKICAgICAgICB9CgoKCiAgICAgICAgcHJvZHVjdGlvbiA9IGRlcGxveW1lbnRFbnZpcm9ubWVudCAiUHJvZHVjdGlvbiIgewogICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiQ3VzdG9tZXIncyBjb21wdXRlciIgIiIgIiIgewogICAgICAgICAgICAgICAgcHJvZHVjdGlvbl93ZWJfYnJvd3NlciA9IGRlcGxveW1lbnROb2RlICJXZWIgQnJvd3NlciIgIiIgIkNocm9tZSwgRmlyZWZveCwgU2FmYXJpLCBvciBFZGdlIiB7CiAgICAgICAgICAgICAgICAgICAgcHJvZHVjdGlvbl9mcm9udGVuZCA9IGNvbnRhaW5lckluc3RhbmNlIGZyb250ZW5kCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIHByb2R1Y3Rpb25fYXdzX2dsb2JhbCA9IGRlcGxveW1lbnROb2RlICJBV1MgR2xvYmFsIiAiIiAiIiB7CiAgICAgICAgICAgICAgICBwcm9kdWN0aW9uX2NkbiA9IGluZnJhc3RydWN0dXJlTm9kZSAiQ0ROIiAiRWZmZWNpZW50bHkgcm91dGVzIGFuZCBjYWNoZXMgdHJhZmZpYyIgIkFXUyBDbG91ZGZyb250IiB7fQogICAgICAgICAgICB9CgogICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiQVdTIFVTLUVBU1QtMSIgIiIgIiIgewogICAgICAgICAgICAgICAgcHJvZHVjdGlvbl9sYiA9IGluZnJhc3RydWN0dXJlTm9kZSAiQXBwbGljYXRpb24gTG9hZCBCYWxhbmNlciIgIlJvdXRlcyByZXF1ZXN0cyB0byB0aGUgbWljcm9zZXJ2aWNlcyIgIkFXUyBFbGFzdGljIExvYWQgQmFsYW5jZXIiIHt9CgogICAgICAgICAgICAgICAgcHJvZHVjdGlvbl9mcm9udGVuZF9taWNyb3NlcnZpY2VfZWNzID0gZGVwbG95bWVudE5vZGUgIkVDUyBTZXJ2aWNlcyIgIkFXUyBzZXJ2ZXJsZXNzIHNjYWxlYWJsZSBjb250YWluZXIgaG9zdGluZyIgIkFXUyBFbGFzdGljIENvbnRhaW5lciBTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICAgICAgcHJvZHVjdGlvbl9mcm9udGVuZF9taWNyb3NlcnZpY2UgPSBjb250YWluZXJJbnN0YW5jZSBmcm9udGVuZF9taWNyb3NlcnZpY2UKICAgICAgICAgICAgICAgICAgICBwcm9kdWN0aW9uX2F1dGhfbWljcm9zZXJ2aWNlID0gY29udGFpbmVySW5zdGFuY2UgYXV0aF9taWNyb3NlcnZpY2UKICAgICAgICAgICAgICAgICAgICBwcm9kdWN0aW9uX2FwaV9taWNyb3NlcnZpY2UgPSBjb250YWluZXJJbnN0YW5jZSBhcGlfbWljcm9zZXJ2aWNlCiAgICAgICAgICAgICAgICAgICAgcHJvZHVjdGlvbl91c2VyX21pY3Jvc2VydmljZSA9IGNvbnRhaW5lckluc3RhbmNlIHVzZXJfbWljcm9zZXJ2aWNlCiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgcHJvZHVjdGlvbl9kYXRhYmFzZSA9IGRlcGxveW1lbnROb2RlICJSRFMiICJBV1MgbWFuYWdlZCBkYXRhYmFzZSBob3N0aW5nIiAiQVdTIFJlbGF0aW9uYWwgRGF0YWJhc2UgU2VydmljZSIgewogICAgICAgICAgICAgICAgICAgIHByb2R1Y3Rpb25fZGIgPSBjb250YWluZXJJbnN0YW5jZSBkYgogICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgfQoKICAgICAgICAgICAgcHJvZHVjdGlvbl9mcm9udGVuZCAtPiBwcm9kdWN0aW9uX2NkbiAiV2ViIFRyYWZmaXgiICJIVFRQUyIKICAgICAgICAgICAgcHJvZHVjdGlvbl9jZG4gLT4gcHJvZHVjdGlvbl9sYiAiV2ViIFRyYWZmaWMiICJIVFRQIgoKICAgICAgICAgICAgcHJvZHVjdGlvbl9sYiAtPiBwcm9kdWN0aW9uX2Zyb250ZW5kX21pY3Jvc2VydmljZSAiRm9yd2FyZHMgd2ViIHBhZ2UgcmVxdWVzdHMiICJIVFRQIgogICAgICAgICAgICBwcm9kdWN0aW9uX2xiIC0+IHByb2R1Y3Rpb25fYXV0aF9taWNyb3NlcnZpY2UgIkZvcndhcmRzIGF1dGhlbnRpY2F0aW9uIHJlcXVlc3RzIiAiSFRUUC9KU09OIgogICAgICAgICAgICBwcm9kdWN0aW9uX2xiIC0+IHByb2R1Y3Rpb25fYXBpX21pY3Jvc2VydmljZSAiRm9yd2FyZHMgbG9jYXRpb24gcmVxdWVzdHMiICJIVFRQL0pTT04iCiAgICAgICAgICAgIHByb2R1Y3Rpb25fbGIgLT4gcHJvZHVjdGlvbl91c2VyX21pY3Jvc2VydmljZSAiRm9yd2FyZHMgdXNlciBkYXRhIHJlcXVlc3RzIiAiSFRUUC9KU09OIgogICAgICAgIH0KCiAgICB9CgogICAgdmlld3MgewogICAgICAgIHN5c3RlbUNvbnRleHQgZ2VvcmVjb3JkIHsKICAgICAgICAgICAgaW5jbHVkZSBnZW9yZWNvcmQgdXNlcgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBjb250YWluZXIgZ2VvcmVjb3JkIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9sYXlvdXQgbHIKICAgICAgICB9CgoKICAgICAgICBkZXBsb3ltZW50ICogcHJvZHVjdGlvbiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgICAgIGV4Y2x1ZGUgZnJvbnRlbmRfYXV0aF9yZWwgZnJvbnRlbmRfYXBpX3JlbCBmcm9udGVuZF91c2VyX3JlbCBmcm9udGVuZF9mcm9udGVuZF9yZWwKICAgICAgICB9CgogICAgICAgIHRoZW1lIGRlZmF1bHQKCiAgICAgICAgc3R5bGVzIHsKICAgICAgICAgICAgZWxlbWVudCAiUGVyc29uIiB7CiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgICAgICBmb250U2l6ZSAyMgogICAgICAgICAgICAgICAgc2hhcGUgUGVyc29uCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiV2ViIEJyb3dzZXIiIHsKICAgICAgICAgICAgICAgIHNoYXBlIFdlYkJyb3dzZXIKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJNb2JpbGUgQXBwIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBNb2JpbGVEZXZpY2VMYW5kc2NhcGUKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJEYXRhYmFzZSIgewogICAgICAgICAgICAgICAgc2hhcGUgQ3lsaW5kZXIKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KCn0K"
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "Deployment-001",
+      "metadataSymbols" : "SquareBrackets",
+      "styles" : {
+        "elements" : [ {
+          "color" : "#ffffff",
+          "fontSize" : 22,
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "shape" : "WebBrowser",
+          "tag" : "Web Browser"
+        }, {
+          "shape" : "MobileDeviceLandscape",
+          "tag" : "Mobile App"
+        }, {
+          "shape" : "Cylinder",
+          "tag" : "Database"
+        } ]
+      },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ]
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "8",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "9",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "10",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "11",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "generatedKey" : true,
+      "key" : "Container-001",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "13"
+      }, {
+        "id" : "15"
+      }, {
+        "id" : "16"
+      }, {
+        "id" : "17"
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "19"
+      }, {
+        "id" : "20"
+      }, {
+        "id" : "21"
+      } ],
+      "softwareSystemId" : "2"
+    } ],
+    "deploymentViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 2722,
+        "width" : 3976
+      },
+      "elements" : [ {
+        "id" : "22",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "23",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "24",
+        "x" : 240,
+        "y" : 1140
+      }, {
+        "id" : "25",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "26",
+        "x" : 1036,
+        "y" : 1140
+      }, {
+        "id" : "27",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "28",
+        "x" : 1786,
+        "y" : 1140
+      }, {
+        "id" : "29",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "30",
+        "x" : 2536,
+        "y" : 240
+      }, {
+        "id" : "32",
+        "x" : 2536,
+        "y" : 840
+      }, {
+        "id" : "34",
+        "x" : 2536,
+        "y" : 1440
+      }, {
+        "id" : "36",
+        "x" : 2536,
+        "y" : 2040
+      }, {
+        "id" : "38",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "39",
+        "x" : 3286,
+        "y" : 1440
+      } ],
+      "environment" : "Production",
+      "generatedKey" : true,
+      "key" : "Deployment-001",
+      "order" : 3,
+      "relationships" : [ {
+        "id" : "40"
+      }, {
+        "id" : "41"
+      }, {
+        "id" : "42"
+      }, {
+        "id" : "43"
+      }, {
+        "id" : "44"
+      }, {
+        "id" : "45",
+        "vertices" : [ {
+          "x" : 2432,
+          "y" : 690
+        } ]
+      }, {
+        "id" : "46"
+      }, {
+        "id" : "47"
+      }, {
+        "id" : "48",
+        "vertices" : [ {
+          "x" : 2432,
+          "y" : 1890
+        } ]
+      } ]
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "generatedKey" : true,
+      "key" : "SystemContext-001",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "12"
+      } ],
+      "softwareSystemId" : "2"
+    } ]
+  }
+}

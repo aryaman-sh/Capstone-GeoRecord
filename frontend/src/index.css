@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Style for react leaflet draw plugin */
+.sr-only {
+  display: none;
+}
+
+/*
+.leaflet-draw-edit-edit {
+  visibility: hidden;
+  }*/
+
+.leaflet-draw-edit-remove {
+  visibility: hidden;
+}
